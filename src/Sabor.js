@@ -3,14 +3,16 @@ import axios from 'axios';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import Navbar from 'react-bootstrap/Navbar';
+import { Card } from 'react-bootstrap';
 import './App.css';
 import { Link } from 'react-router-dom';
-import Sabor from './Sabor'
+import { FaPlus } from 'react-icons/fa'; // Importe o FaPlus corretamente
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
 function App() {
   const [tipo_base, settipo_base] = useState('');
-
+  
   const envio = (event) => {
     event.preventDefault();
     const novoproduto = { tipo_base };
@@ -44,22 +46,20 @@ function App() {
           <Col sm={6} >
             <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '8px' }} className='centro'>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }} className='centro'>
-                <div >
-                  <div style={{ display: 'flex', gap: '20px' }} className='centro' >
-                    <form onSubmit={envio}>
+                <form onSubmit={envio}>
+                  <div >
+                    <div style={{ display: 'flex', gap: '20px' }} className='centro' >
                       <label style={{ flex: 1 }} >
                         <div style={{ color: 'black' }} className='centro'>Escolha da base</div>
-                        <button class="button button2" value={tipo_base} onChange={(e) => settipo_base(e.target.value)}>Milk shake</button>
-                        <button class="button button2" value={tipo_base} onChange={(e) => settipo_base(e.target.value)}>Sundae</button>
-                        <button class="button button2" value={tipo_base} onChange={(e) => settipo_base(e.target.value)}>Casquinha</button>
+                        <button class="button button2"value={tipo_base} onChange={(e) => settipo_base(e.target.value)}>Milk shake</button>
+                        <button class="button button2"value={tipo_base} onChange={(e) => settipo_base(e.target.value)}>Sundae</button>
+                        <button class="button button2"value={tipo_base} onChange={(e) => settipo_base(e.target.value)}>Casquinha</button>
                       </label>
-                    </form>
+                    </div>
                   </div>
-                  <Link to="/Sabor">
-                    <Button type="submit"
-                      style={{ borderRadius: '4px' }}>Proximo</Button>
-                  </Link>
-                </div>
+                  </form>
+                  <Button type="submit"
+                    style={{ borderRadius: '4px' }}>Proximo</Button>
               </div>
             </div>
           </Col>
@@ -76,11 +76,6 @@ function App() {
           </div>
         </div>
       </Container>
-
-      <Routes>
-            <Route path="/" />
-            <Route path="/Sabor" element={<Sabor/>} />
-          </Routes>
 
     </>
   );
